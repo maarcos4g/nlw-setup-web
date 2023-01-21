@@ -4,6 +4,8 @@ import { App } from './App'
 
 import './styles/global.css'
 
+import './lib/dayjs'
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <App />
