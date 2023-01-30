@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
+import { useAuth } from "../hooks/useAuth";
 import { api } from "../lib/axios";
 import { generateDatesFromYearBeginning } from "../utils/generate-dates-from-year-beginning";
 import { HabitDay } from "./HabitDay";
@@ -29,8 +30,10 @@ type Summary = Array<{
 export function SummaryTable() {
   const [summary, setSummary] = useState<Summary>([]);
 
+  const { user } = useAuth()
+
   useEffect(() => {
-    api.get("/summary")
+    api.get(`/summary/user/${user?.id}`)
       .then(response => {
         setSummary(response.data);
       })
